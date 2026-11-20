@@ -7,7 +7,7 @@ const corsHeaders = {
 
 const jsonRes = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
-const APP_NAME = "cloudmember";
+const APP_NAME = "ybscloudmember";
 const APP_VERSION = "1.0.118";
 const APP_RELEASE_DATE = "2026-11-07";
 const DEFAULT_INSTALLATION_MODE = "master";
