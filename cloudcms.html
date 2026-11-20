@@ -1,0 +1,739 @@
+<style>
+  .sales-page {
+    --ink: #0f172a;
+    --muted: #475569;
+    --line: #e2e8f0;
+    --primary: #10b981;
+    --primary-dark: #059669;
+    --primary-light: #d1fae5;
+    --teal: #0f766e;
+    --white: #ffffff;
+    --soft: #f8fafc;
+    --bg-gradient: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+    
+    color: var(--ink);
+    background: var(--soft);
+    font-family: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .sales-page * { 
+    box-sizing: border-box; 
+    scroll-behavior: smooth;
+  }
+  
+  .sales-wrap { 
+    width: min(1140px, calc(100% - 40px)); 
+    margin: 0 auto; 
+  }
+  
+  /* Navigation */
+  .sales-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .sales-nav .sales-wrap {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  
+  .sales-brand { 
+    font-weight: 800; 
+    font-size: 1.1rem; 
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .sales-nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.5rem; 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+  }
+  
+  .sales-nav-links a:not(.sales-button) { 
+    text-decoration: none; 
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+  
+  .sales-nav-links a:not(.sales-button):hover {
+    color: var(--primary-dark);
+  }
+  
+  /* Buttons */
+  .sales-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0 1.5rem;
+    border-radius: 0.75rem;
+    background: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  }
+  
+  .sales-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+  }
+  
+  .sales-button.alt {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--line);
+    box-shadow: none;
+  }
+  
+  .sales-button.alt:hover {
+    border-color: var(--primary);
+    color: var(--primary-dark);
+    background: var(--primary-light);
+  }
+
+  /* Hero Section */
+  .sales-hero {
+    padding: clamp(5rem, 10vw, 8rem) 0 4rem;
+    background: 
+      radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.08), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(15, 118, 110, 0.05), transparent 40%),
+      var(--bg-gradient);
+    overflow: hidden;
+  }
+  
+  .sales-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 5rem);
+    align-items: center;
+  }
+  
+  .sales-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1.25rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  .sales-page h1 {
+    margin: 0 0 1.25rem;
+    color: var(--ink);
+    font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  
+  .sales-lead {
+    margin: 0 0 2rem;
+    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 95%;
+  }
+  
+  .sales-actions { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+    align-items: center; 
+  }
+  
+  .sales-proof { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.75rem; 
+    margin-top: 2rem; 
+  }
+  
+  .sales-proof span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+  
+  .sales-proof span::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: 900;
+    margin-right: 0.4rem;
+  }
+
+  /* Mockup UI */
+  .sales-preview {
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: var(--white);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+    overflow: hidden;
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .sales-preview:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  }
+  
+  .preview-bar {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--line);
+    background: #f1f5f9;
+  }
+  
+  .preview-dots { display: flex; gap: 6px; flex: 1; }
+  .preview-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .preview-dots span:nth-child(1) { background: #ef4444; }
+  .preview-dots span:nth-child(2) { background: #eab308; }
+  .preview-dots span:nth-child(3) { background: #22c55e; }
+  
+  .preview-bar strong { flex: 2; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  .preview-bar .spacer { flex: 1; }
+  
+  .preview-body { display: grid; grid-template-columns: 180px 1fr; min-height: 400px; }
+  
+  .preview-side {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 1.25rem;
+  }
+  
+  .preview-side strong { display: block; color: var(--white); margin-bottom: 1.5rem; font-size: 1rem; }
+  .preview-side span { 
+    display: block; 
+    padding: 0.6rem 0; 
+    font-size: 0.85rem; 
+    font-weight: 500;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .preview-side span:hover { color: var(--white); }
+  
+  .preview-main { padding: 1.5rem; background: var(--soft); }
+  
+  .preview-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .preview-stat {
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .preview-stat small { display: block; color: var(--muted); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+  .preview-stat b { display: block; margin-top: 0.5rem; color: var(--ink); font-size: 1.3rem; font-weight: 800; }
+  
+  .preview-builder {
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--white);
+    overflow: hidden;
+  }
+  .preview-builder-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--line);
+    background: #f8fafc;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .preview-builder-head .btn-mini {
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.35rem;
+    font-size: 0.75rem;
+  }
+  .preview-canvas { padding: 1.5rem; }
+  .preview-canvas .hero-line { width: 60%; height: 24px; border-radius: 4px; background: var(--primary-light); margin-bottom: 1rem; }
+  .preview-canvas .body-line { width: 100%; height: 12px; border-radius: 4px; background: #e2e8f0; margin-bottom: 0.6rem; }
+  
+  /* Demo Access Banner */
+  .demo-banner {
+    background: var(--ink);
+    padding: 4rem 0;
+  }
+  
+  .demo-box {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  }
+  
+  .demo-info h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+  }
+  
+  .demo-info p {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 1.05rem;
+  }
+  
+  .demo-creds {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    font-family: monospace;
+    font-size: 1rem;
+    color: #cbd5e1;
+    min-width: 260px;
+  }
+  
+  .demo-creds div { margin-bottom: 0.5rem; }
+  .demo-creds div:last-child { margin-bottom: 0; }
+  .demo-creds b { color: var(--primary-light); display: inline-block; width: 55px; }
+  
+  .demo-action { flex-shrink: 0; }
+  
+  /* General Sections */
+  .sales-section { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--white); }
+  .sales-section.soft { background: var(--soft); }
+  
+  .section-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+  .sales-section h2 {
+    margin: 0 0 1rem;
+    color: var(--ink);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .sales-section .section-lead { 
+    color: var(--muted); 
+    line-height: 1.7; 
+    font-size: 1.1rem; 
+  }
+  
+  /* Cards & Grid */
+  .sales-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    gap: 1.5rem; 
+  }
+  
+  .sales-card {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sales-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-light);
+  }
+  
+  .sales-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+  
+  .sales-card h3 { margin: 0 0 0.75rem; color: var(--ink); font-size: 1.25rem; font-weight: 700; }
+  .sales-card p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
+  
+  /* Package Section */
+  .sales-package {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .package-list { display: grid; gap: 1rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+  .package-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  .package-list li::before {
+    content: "✓";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  
+  .price-box {
+    border: 2px solid var(--primary);
+    border-radius: 1.25rem;
+    background: var(--white);
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.25);
+    text-align: center;
+  }
+  
+  .price-box strong { display: block; color: var(--primary-dark); font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .price-box h3 { margin: 0 0 1rem; color: var(--ink); font-size: 2.2rem; font-weight: 800; }
+  .price-box p { margin: 0 0 2rem; color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
+  .price-box .sales-button { width: 100%; }
+  
+  /* Steps */
+  .sales-steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .step-card { text-align: center; padding: 2rem 1.5rem; }
+  .step-card .sales-icon { margin: 0 auto 1.5rem; border-radius: 50%; width: 3.5rem; height: 3.5rem; }
+  .step-card .sales-icon::before { counter-increment: step; content: counter(step); }
+  
+  /* FAQ */
+  .faq-list { display: grid; gap: 1rem; max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--white);
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .faq-item:hover { border-color: var(--primary); }
+  .faq-item h3 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+  .faq-item p { margin: 0; color: var(--muted); line-height: 1.6; }
+  
+  /* Final CTA */
+  .sales-final {
+    background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%);
+    color: var(--white);
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    text-align: center;
+  }
+  
+  .sales-final-content { max-width: 750px; margin: 0 auto; }
+  .sales-final h2 { color: var(--white); margin-bottom: 1.5rem; }
+  .sales-final p { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 2.5rem; }
+  .sales-final .sales-button { font-size: 1.1rem; min-height: 3.6rem; padding: 0 2.5rem; }
+  
+  /* Footer */
+  .sales-footer-note { 
+    padding: 2rem 0; 
+    background: #020617; 
+    color: #64748b; 
+    font-size: 0.9rem; 
+    text-align: center; 
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .sales-hero-grid, .sales-package { grid-template-columns: 1fr; gap: 3rem; }
+    .sales-package .price-box { max-width: 500px; margin: 0 auto; }
+    .section-header { text-align: left; }
+  }
+  
+  @media (max-width: 768px) {
+    .sales-nav-links a:not(.sales-button) { display: none; }
+    .sales-grid, .sales-steps { grid-template-columns: 1fr; }
+    .sales-actions { flex-direction: column; width: 100%; }
+    .sales-actions .sales-button { width: 100%; }
+    .preview-body { grid-template-columns: 1fr; }
+    .preview-side { display: none; }
+    .demo-box { flex-direction: column; align-items: flex-start; }
+    .demo-creds, .demo-action, .demo-action .sales-button { width: 100%; }
+  }
+</style>
+
+<div class="sales-page">
+  <!-- Navigation -->
+  <nav class="sales-nav">
+    <div class="sales-wrap">
+      <div class="sales-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Sheetflare CMS
+      </div>
+      <div class="sales-nav-links">
+        <a href="#fitur">Keunggulan</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#paket">Isi Paket</a>
+        <a href="#faq">FAQ</a>
+        <a class="sales-button" href="/checkout?id=cloudcms">Beli Sekarang (Rp 50.000)</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="sales-hero">
+    <div class="sales-wrap sales-hero-grid">
+      <div>
+        <p class="sales-kicker">💸 100% BEBAS BIAYA LANGGANAN SERVER</p>
+        <h1>Landing Page Profesional & Super Cepat—Tanpa Biaya Hosting Bulanan!</h1>
+        <p class="sales-lead">Berhenti buang uang untuk sewa hosting dan domain kustom yang menumpuk tiap bulan. Dengan <i>engine</i> ini, Anda bisa mendeploy ratusan landing page jualan berkecepatan tinggi langsung ke infrastruktur Cloudflare <b>gratis selamanya</b>. Solusi instan untuk halaman promosi berkelas tanpa beban biaya operasional.</p>
+        <div class="sales-actions">
+          <a class="sales-button" href="/checkout?id=cloudcms">Beli Source Code — Rp 50.000</a>
+          <a class="sales-button alt" href="#demo">Coba Demo Panel</a>
+        </div>
+        <div class="sales-proof">
+          <span>⚡ Load Speed <1 Detik</span>
+          <span>💸 Rp 0 Biaya Hosting (Cloudflare Pages)</span>
+          <span>🌐 Subdomain & SSL Gratis Selamanya</span>
+        </div>
+      </div>
+
+      <!-- UI Preview/Mockup -->
+      <div class="sales-preview" aria-label="Preview admin Sheetflare Landing Page CMS">
+        <div class="preview-bar">
+          <div class="preview-dots"><span></span><span></span><span></span></div>
+          <strong>dashboard.sheetflare.com</strong>
+          <div class="spacer"></div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-side">
+            <strong>Workspace</strong>
+            <span>📊 Dashboard</span>
+            <span>👥 Leads & CRM</span>
+            <span>✉️ Broadcast</span>
+            <span>📄 Pages</span>
+            <span>⚙️ Settings</span>
+          </div>
+          <div class="preview-main">
+            <div class="preview-stat-grid">
+              <div class="preview-stat"><small>Server Cost</small><b>Rp 0</b></div>
+              <div class="preview-stat"><small>Page Speed</small><b>99/100</b></div>
+              <div class="preview-stat"><small>Active Pages</small><b>Unlimited</b></div>
+            </div>
+            <div class="preview-builder">
+              <div class="preview-builder-head">
+                <span>Page Editor: Campaign Aktif</span>
+                <span class="btn-mini">Publish Page</span>
+              </div>
+              <div class="preview-canvas">
+                <div class="hero-line"></div>
+                <div class="body-line"></div>
+                <div class="body-line" style="width:85%"></div>
+                <div class="body-line" style="width:70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Access Section -->
+  <section class="demo-banner" id="demo">
+    <div class="sales-wrap">
+      <div class="demo-box">
+        <div class="demo-info">
+          <h3>👀 Penasaran Tampilan Dalamnya?</h3>
+          <p>Buktikan sendiri betapa responsif dan ringannya sistem Sheetflare. Silakan login ke dashboard demo sekarang tanpa perlu instalasi apapun.</p>
+        </div>
+        <div class="demo-creds">
+          <div><b>User:</b> admin@email.com</div>
+          <div><b>Pass:</b> admin123</div>
+        </div>
+        <div class="demo-action">
+          <a class="sales-button" href="https://lead-8x8.pages.dev/admin" target="_blank" style="background: var(--white); color: var(--ink);">Login Demo Sekarang &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="sales-section" id="fitur">
+    <div class="sales-wrap">
+      <div class="section-header">
+        <h2>Landing Page Sekelas Enterprise, Budget Hosting Rp 0.</h2>
+        <p class="section-lead">Teknologi serverless mutakhir memanfaatkan jaringan tepi (Edge Network) global. Kecepatan maksimal untuk konversi maksimal, tanpa tagihan bulanan.</p>
+      </div>
+      <div class="sales-grid">
+        <article class="sales-card">
+          <span class="sales-icon">💰</span>
+          <h3>Zero-Cost Infrastructure</h3>
+          <p>Memanfaatkan Cloudflare Pages & database D1 gratis. Bebas biaya sewa VPS, Cloud Hosting, atau shared hosting konvensional.</p>
+        </article>
+        <article class="sales-card">
+          <span class="sales-icon">⚡</span>
+          <h3>Kecepatan Blazing-Fast</h3>
+          <p>Halaman dimuat kurang dari 1 detik langsung dari jaringan server terdekat dari lokasi pengunjung Anda. Skor performa dijamin optimal.</p>
+        </article>
+        <article class="sales-card">
+          <span class="sales-icon">🌐</span>
+          <h3>Bebas Domain Berbayar</h3>
+          <p>Gunakan subdomain kustom bawaan Cloudflare gratis, atau pasang domain sendiri tanpa biaya tambahan sepeser pun.</p>
+        </article>
+        <article class="sales-card">
+          <span class="sales-icon">🎨</span>
+          <h3>Visual Builder & HTML Upload</h3>
+          <p>Edit visual instan dari admin panel atau langsung upload file HTML mentah untuk dijadikan halaman baru dalam hitungan detik.</p>
+        </article>
+        <article class="sales-card">
+          <span class="sales-icon">🗄️</span>
+          <h3>Database Prospek Mandiri</h3>
+          <p>Formulir bawaan langsung terhubung ke database kustom Anda. Data prospek aman milik Anda sendiri, bukan di server pihak ketiga.</p>
+        </article>
+        <article class="sales-card">
+          <span class="sales-icon">✉️</span>
+          <h3>Automasi Follow Up</h3>
+          <p>Kirim email sambutan instan atau jadwalkan blast WhatsApp/Email secara berkala langsung dari dashboard manajemen prospek.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Package / Pricing Section -->
+  <section class="sales-section soft" id="paket">
+    <div class="sales-wrap sales-package">
+      <div>
+        <h2>Miliki Aset Digital Berdaya Jual Tinggi</h2>
+        <p class="section-lead">Gunakan source code ini untuk kebutuhan komersial pribadi, sebagai fondasi proyek agensi Anda, atau kemas ulang (*whitelabel*) sebagai produk SaaS baru tanpa biaya maintenance server.</p>
+        <ul class="package-list">
+          <li><b>Full Core Source Code:</b> Kode arsitektur ringan siap deploy untuk Cloudflare Pages & Functions.</li>
+          <li><b>Admin Panel Professional:</b> Interface minimalis, responsif, dan mudah dioperasikan untuk kelola konten.</li>
+          <li><b>Visual Builder Engine:</b> Modul editor visual terintegrasi untuk menyusun landing page instan.</li>
+          <li><b>Sistem Auto-Slug Router:</b> Cukup upload file HTML, sistem otomatis membuat halaman baru berbasis nama file.</li>
+          <li><b>Skema Database Serverless:</b> Template konfigurasi database SQLite D1 yang stabil dan anti-down.</li>
+          <li><b>Dokumentasi & SOP Singkat:</b> Langkah demi langkah cara setup API pihak ketiga untuk WhatsApp/Email.</li>
+        </ul>
+      </div>
+      <aside class="price-box">
+        <strong>Akses Penuh Source Code</strong>
+        <div style="margin: 1.5rem 0 1rem;">
+          <span style="text-decoration: line-through; color: var(--muted); font-size: 1.1rem; display: block;">Rp 199.000</span>
+          <b style="font-size: 3rem; color: var(--ink); font-weight: 900; display: block; line-height: 1;">Rp 50.000</b>
+          <small style="color: var(--primary-dark); font-weight: 700; display: block; margin-top: 0.4rem; font-size: 0.85rem;">INVESTASI SEKALI, PAKAI SELAMANYA</small>
+        </div>
+        <p>Bebaskan diri dan klien Anda dari biaya platform bulanan yang mencekik. Bangun ratusan aset landing page berkinerja tinggi sekarang.</p>
+        <a class="sales-button" href="/checkout?id=cloudcms">Beli Sekarang (Akses Instan)</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="sales-section">
+    <div class="sales-wrap">
+      <div class="section-header">
+        <h2>4 Langkah Mudah Menuju Bebas Biaya Server</h2>
+        <p class="section-lead">Proses setup super praktis tanpa perlu keahlian sysadmin atau manajemen server yang rumit.</p>
+      </div>
+      <div class="sales-steps">
+        <article class="sales-card step-card">
+          <span class="sales-icon"></span>
+          <h3>One-Click Deploy</h3>
+          <p>Unggah berkas source code ke dashboard Cloudflare gratis Anda.</p>
+        </article>
+        <article class="sales-card step-card">
+          <span class="sales-icon"></span>
+          <h3>Inisialisasi Panel</h3>
+          <p>Masuk ke dashboard admin, atur profil brand, warna dasar, dan token API kirim pesan.</p>
+        </article>
+        <article class="sales-card step-card">
+          <span class="sales-icon"></span>
+          <h3>Rancang Konten</h3>
+          <p>Tulis penawaran Anda lewat visual builder terintegrasi atau upload template HTML pilihan.</p>
+        </article>
+        <article class="sales-card step-card">
+          <span class="sales-icon"></span>
+          <h3>Live Tanpa Tagihan</h3>
+          <p>Halaman aktif instan, siap terima ribuan trafik harian tanpa takut situs down atau kena tagihan jebol.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="sales-section soft" id="faq">
+    <div class="sales-wrap">
+      <div class="section-header">
+        <h2>Masih Ragu? Ini Jawabannya</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Kenapa bisa benar-benar gratis tanpa biaya hosting?</h3>
+          <p>Karena sistem ini dibangun khusus menggunakan infrastruktur serverless milik Cloudflare (Pages & D1) yang menyediakan *free tier* bulanan sangat masif (jutaan request gratis per bulan). Sangat lebih dari cukup untuk operasional harian UMKM maupun agensi menengah.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Apakah saya wajib membeli domain kustom baru?</h3>
+          <p>Tidak wajib. Cloudflare otomatis memberikan subdomain bawaan secara cuma-cuma (seperti `nama-situs.pages.dev`) yang sudah dilengkapi sertifikat SSL (HTTPS) aman. Namun, jika Anda ingin menyambungkan domain pribadi yang sudah ada, prosesnya gratis tanpa biaya sewa tambahan.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Mengapa kecepatan muat landing page ini bisa sangat cepat?</h3>
+          <p>Sistem ini tidak menggunakan framework berat atau database konvensional yang lambat. Landing page diproses langsung di server Edge global Cloudflare, membuat *Time to First Byte (TTFB)* sangat kecil sehingga halaman langsung terbuka seketika saat di-klik.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Apakah data prospek aman jika hostingnya gratis?</h3>
+          <p>Sangat aman. Data prospek disimpan dalam database D1 terenkripsi khusus milik akun Cloudflare Anda sendiri. Pihak luar tidak memiliki akses ke database tersebut, menjamin privasi penuh atas data konsumen Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="sales-final">
+    <div class="sales-wrap sales-final-content">
+      <h2>Miliki Engine Landing Page Mandiri Sekarang Juga</h2>
+      <p>Jangan tunda lagi. Amankan source code Sheetflare hari ini hanya dengan investasi <b>Rp 50.000</b> (Sekali Bayar) dan bangun ekosistem landing page kencang dengan biaya server Rp 0 selamanya. Setelah pembayaran berhasil, file produk dan panduan eksklusif langsung dikirim ke email Anda.</p>
+      <div style="margin-top: 2rem;">
+        <a class="sales-button" href="/checkout?id=cloudcms">Amankan Source Code (Hanya Rp 50.000) &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="sales-footer-note">
+    © 2026 Sheetflare Landing Page CMS. Solusi Serverless Cepat, Ringan, Tanpa Tagihan Bulanan.
+  </div>
+</div>

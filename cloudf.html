@@ -1,0 +1,884 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudMember - Sistem Jualan Digital, Fisik, Membership & LMS Tanpa Langganan Server</title>
+    <meta name="description" content="CloudMember adalah sistem jualan produk digital, membership, CMS, checkout, affiliate, dan notifikasi otomatis berbasis Cloudflare Pages dan D1 SQL.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --ink: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --soft: #f8fafc;
+            --cyan: #0ea5e9;
+            --cyan-light: #e0f2fe;
+            --green: #10b981;
+            --green-light: #d1fae5;
+            --orange: #f97316;
+            --amber: #fef3c7;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        a { color: inherit; transition: all 0.2s ease; }
+        
+        .page { width: 100%; overflow: hidden; }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            gap: 20px;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+        
+        .brand-mark {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--cyan), #0284c7);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: 16px;
+            box-shadow: 0 8px 16px rgba(14, 165, 233, 0.25);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #475569;
+        }
+        
+        .nav-links a { text-decoration: none; }
+        .nav-links a:hover { color: var(--cyan); }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            border: 1px solid transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        
+        .btn:hover { transform: translateY(-2px); }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), #ea580c);
+            color: white;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.25);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 14px 28px rgba(249, 115, 22, 0.35);
+        }
+        
+        .btn-ghost {
+            background: white;
+            color: var(--ink);
+            border-color: var(--line);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-ghost:hover {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 140px 24px 80px;
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent 40%),
+                        linear-gradient(180deg, var(--soft) 0%, var(--white) 100%);
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-copy {
+            padding-right: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: #047857;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--green-light);
+            padding: 6px 14px;
+            border-radius: 100px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            font-weight: 900;
+            color: var(--ink);
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(90deg, var(--cyan), #3b82f6);
+        }
+
+        .hero-lead {
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .price-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: baseline;
+            font-weight: 800;
+        }
+
+        .price-line s { color: #94a3b8; font-size: 18px; }
+        .price-line strong { color: var(--ink); font-size: 40px; line-height: 1; letter-spacing: -1px; }
+
+        .hero-note {
+            margin-top: 24px;
+            padding: 16px 20px;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            background: var(--green-light);
+            color: #065f46;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mockup-11 {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 24px;
+            filter: drop-shadow(0 25px 40px rgba(0,0,0,0.15));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Showcase Section */
+        .showcase-section {
+            padding: 40px 24px 80px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .showcase-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mockup-169 {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--line);
+            transition: transform 0.3s ease;
+        }
+        
+        .mockup-169:hover {
+            transform: scale(1.01);
+        }
+
+        /* General Section Styles */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section.soft { background: var(--soft); }
+        
+        .section.dark { 
+            background: var(--ink); 
+            color: white; 
+            background-image: radial-gradient(circle at top right, rgba(14, 165, 233, 0.15), transparent 50%);
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 56px;
+        }
+
+        .section-head.left {
+            text-align: left;
+            margin: 0 0 40px 0;
+        }
+
+        .section-kicker {
+            color: var(--cyan);
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-size: clamp(32px, 4vw, 42px);
+            line-height: 1.2;
+            letter-spacing: -1px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .dark p, .dark .section-kicker { color: #94a3b8; }
+        .dark h2 { color: white; }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Cards */
+        .feature, .step, .faq {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature:hover, .step:hover, .faq:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .feature b, .step b, .faq b {
+            display: block;
+            font-size: 20px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .feature p, .step p, .faq p { 
+            font-size: 15px; 
+            line-height: 1.6;
+        }
+
+        .icon-box {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--cyan-light);
+            color: #0284c7;
+            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 24px;
+        }
+
+        .feature:nth-child(2n) .icon-box { background: var(--green-light); color: #047857; }
+        .feature:nth-child(3n) .icon-box { background: var(--amber); color: #b45309; }
+
+        /* Cloudflare Section */
+        .cloud-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .cloud-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .cloud-card h3 { 
+            font-size: 28px; 
+            line-height: 1.2; 
+            margin-bottom: 16px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .check-list { list-style: none; display: grid; gap: 16px; margin-top: 32px; }
+        
+        .check-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            color: #e2e8f0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            flex-shrink: 0;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: var(--green);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            font-weight: 900;
+            margin-top: 2px;
+        }
+
+        .included {
+            display: grid;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .included div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 12px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        
+        .section:not(.dark) .included div {
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .included span { 
+            color: var(--cyan); 
+            font-size: 14px; 
+            font-weight: 800; 
+            background: rgba(14, 165, 233, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        
+        .section:not(.dark) .included span {
+            color: var(--green);
+            background: var(--green-light);
+        }
+
+        /* Workflow */
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .step-num {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            background: var(--ink);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Pricing */
+        .pricing {
+            display: grid;
+            grid-template-columns: 1fr 440px;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .price-card {
+            border: 2px solid var(--cyan);
+            border-radius: 24px;
+            background: white;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--cyan), #0284c7);
+            color: white;
+            border-radius: 100px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        .price-card s { color: #94a3b8; font-size: 20px; font-weight: 700; display: block; margin-top: 10px;}
+        .price-card .sale { 
+            display: block; 
+            color: var(--ink); 
+            font-size: 64px; 
+            line-height: 1; 
+            font-weight: 900; 
+            letter-spacing: -2px;
+            margin: 8px 0 16px; 
+        }
+        
+        .price-card .small { color: #64748b; font-size: 15px; margin-bottom: 24px; font-weight: 500;}
+        .price-card .btn { width: 100%; height: 56px; font-size: 16px; margin-top: 24px;}
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        /* Final CTA */
+        .final {
+            text-align: center;
+            padding: 100px 24px;
+            background: linear-gradient(180deg, var(--white) 0%, var(--cyan-light) 100%);
+        }
+
+        .final h2 {
+            max-width: 800px;
+            margin: 0 auto 24px;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .final p {
+            max-width: 680px;
+            margin: 0 auto 40px;
+            color: #475569;
+            font-size: 18px;
+        }
+        
+        .final .btn {
+            height: 56px;
+            font-size: 16px;
+            padding: 0 32px;
+        }
+
+        footer {
+            padding: 40px 24px;
+            border-top: 1px solid var(--line);
+            color: #94a3b8;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+            background: var(--white);
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-copy { padding-right: 0; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+            .eyebrow { margin: 0 auto 20px; }
+            .hero-actions, .price-line { justify-content: center; }
+            .mockup-11 { margin-top: 40px; }
+            .pricing { grid-template-columns: 1fr; }
+            .price-card { max-width: 500px; margin: 0 auto; }
+            .cloud-panel { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .grid-3, .workflow, .faq-grid { grid-template-columns: 1fr; }
+            .section { padding: 60px 20px; }
+            .hero { padding: 120px 20px 60px; }
+            .brand span { font-size: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 36px; }
+            .price-card .sale { font-size: 48px; }
+            .hero-actions .btn { width: 100%; }
+        }
+    </style>
+
+
+    <div class="page">
+        <nav class="nav">
+            <div class="nav-inner">
+                <a href="#" class="brand" aria-label="CloudMember">
+                    <span class="brand-mark">CM</span>
+                    <span>CloudMember</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#fitur">Fitur</a>
+                    <a href="#cloudflare">Tanpa Server</a>
+                    <a href="#harga">Harga</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <a class="btn btn-primary" href="/checkout?id=cloudp">Ambil Promo</a>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <div class="eyebrow">Sistem Bisnis Digital Cloudflare</div>
+                    <h1><span>Satu Sistem</span> Jualan Tanpa Biaya Server Bulanan</h1>
+                    <p class="hero-lead">Bangun website jualan produk digital, member area, halaman CMS, checkout, affiliate, dan notifikasi otomatis dari satu tempat yang super cepat.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="/checkout?id=cloudp">Dapatkan Sekarang</a>
+                        <a class="btn btn-ghost" href="#fitur">Lihat Fitur</a>
+                    </div>
+                    <div class="price-line">
+                        <s>Rp497.000</s>
+                        <strong>Rp97.000</strong>
+                    </div>
+                    <div class="hero-note">Sekali bayar. Bebas biaya server karena berjalan 100% menggunakan Cloudflare Pages dan D1 SQL.</div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://drive.google.com/thumbnail?id=1dhLuunypb0_Nv5pfyzKAsK4nskzqF2ZM&sz=w1600" alt="CloudMember App Interface" class="mockup-11">
+                </div>
+            </div>
+        </header>
+
+        <section class="showcase-section">
+            <div class="showcase-inner">
+                <img src="https://drive.google.com/thumbnail?id=1dhLuunypb0_Nv5pfyzKAsK4nskzqF2ZM&sz=w1600" alt="CloudMember Dashboard Preview" class="mockup-169">
+            </div>
+        </section>
+
+        <main>
+            
+<section class="section soft" id="fitur">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-kicker">Fitur Lengkap CloudMember</div>
+      <h2>Satu sistem untuk menjual, mengelola, dan mengembangkan bisnis digital.</h2>
+      <p>CloudMember menggabungkan checkout, produk digital, produk fisik, membership, LMS, affiliate, marketing tools, dan operasional bisnis dalam satu dashboard.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature"><div class="icon-box">01</div><b>Checkout Digital & Fisik</b><p>Jual ebook, kursus, lisensi, subscription, merchandise, dan produk fisik dalam satu alur checkout.</p></div>
+      <div class="feature"><div class="icon-box">02</div><b>Member Area Otomatis</b><p>Pembeli mendapatkan akses otomatis setelah pembayaran berhasil untuk materi, file, LMS, dan bonus.</p></div>
+      <div class="feature"><div class="icon-box">03</div><b>LMS & Video Course</b><p>Kelola kelas online, playlist video, dokumen PDF, dan akses pembelajaran khusus member.</p></div>
+      <div class="feature"><div class="icon-box">04</div><b>Produk Fisik & Cek Ongkir</b><p>Dukungan stok, berat, dimensi, alamat pengiriman, kurir, dan perhitungan ongkir otomatis.</p></div>
+      <div class="feature"><div class="icon-box">05</div><b>Visual Builder & CMS</b><p>Buat landing page, halaman penjualan, halaman bonus, artikel, dan halaman legal tanpa coding ulang.</p></div>
+      <div class="feature"><div class="icon-box">06</div><b>Blog SEO Profesional</b><p>Dilengkapi SEO title, description, keyword, canonical, OG card, dan structured data.</p></div>
+      <div class="feature"><div class="icon-box">07</div><b>Affiliate 3 Level</b><p>Tracking referral, komisi bertingkat, leaderboard, dan pengelolaan affiliate dari dashboard.</p></div>
+      <div class="feature"><div class="icon-box">08</div><b>Kupon, Upsell & Order Bump</b><p>Tingkatkan nilai transaksi dengan promo, diskon, harga coret, dan penawaran tambahan.</p></div>
+      <div class="feature"><div class="icon-box">09</div><b>Payment Gateway Multi Metode</b><p>Dukung transfer, VA, QRIS, e-wallet, retail, dan gateway pembayaran yang terintegrasi.</p></div>
+      <div class="feature"><div class="icon-box">10</div><b>Lisensi Produk Otomatis</b><p>Generate lisensi, import data, kontrol stok lisensi, dan pengiriman lisensi melalui email/WhatsApp.</p></div>
+      <div class="feature"><div class="icon-box">11</div><b>WhatsApp & Email Automation</b><p>Notifikasi order, pembayaran, affiliate, membership, dan follow-up customer otomatis.</p></div>
+      <div class="feature"><div class="icon-box">12</div><b>Tracking Marketing & Backup</b><p>Integrasi pixel, analytics, export database, backup SQL, dan sistem update versi.</p></div>
+    </div>
+  </div>
+</section>
+
+
+            <section class="section dark" id="cloudflare">
+                <div class="wrap">
+                    <div class="cloud-panel">
+                        <div>
+                            <div class="section-kicker">Infrastruktur Modern</div>
+                            <h2>Lupakan pusingnya sewa VPS dan Hosting bulanan.</h2>
+                            <p>CloudMember terhubung langsung dengan ekosistem Cloudflare. Teknologi edge server and database modern menjamin sistem Anda ringan, cepat, dan tangguh.</p>
+                            <ul class="check-list">
+                                <li>Website didukung Cloudflare Pages (Super Cepat).</li>
+                                <li>Database memakai Cloudflare D1 SQL (Relational DB asli).</li>
+                                <li>Tidak butuh biaya VPS atau hosting cPanel tambahan.</li>
+                                <li>Bisa diarahkan ke custom domain (.com, .id) milik Anda.</li>
+                            </ul>
+                        </div>
+                        <div class="cloud-card">
+                            <h3>Bayar Sekali, Pakai Terus</h3>
+                            <p>Fokus saja memikirkan ide produk dan strategi marketing. Biarkan urusan backend berjalan gratis dengan limit sangat longgar dari Cloudflare.</p>
+                            <div class="included">
+                                <div><strong>Cloudflare Pages</strong><span>Website Edge</span></div>
+                                <div><strong>D1 SQL Database</strong><span>Data Storage</span></div>
+                                <div><strong>Pages Worker</strong><span>Backend API</span></div>
+                                <div><strong>Custom Domain</strong><span>Branding</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="wrap">
+                    <div class="section-head left">
+                        <div class="section-kicker">Alur Kerja Cepat</div>
+                        <h2>Mulai Jualan dalam 4 Langkah Sederhana</h2>
+                    </div>
+                    <div class="workflow">
+                        <div class="step"><div class="step-num">1</div><b>Install Sistem</b><p>Unggah file ke Cloudflare Pages dan lakukan binding dengan database D1.</p></div>
+                        <div class="step"><div class="step-num">2</div><b>Setup Produk</b><p>Masukkan judul, harga, cover gambar, file akses, diskon, dan order bump.</p></div>
+                        <div class="step"><div class="step-num">3</div><b>Desain Halaman</b><p>Pakai visual builder CMS untuk merangkai halaman penawaran yang menjual.</p></div>
+                        <div class="step"><div class="step-num">4</div><b>Terima Profit</b><p>Pembeli checkout, invoice terbit, bayar, dan akses member terbuka otomatis.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="demo">
+                <div class="wrap">
+                    <div style="background: linear-gradient(135deg, var(--soft), var(--cyan-light)); border: 1px solid #bae6fd; border-radius: 24px; padding: 48px 24px; text-align: center; box-shadow: var(--shadow-md);">
+                        <div class="section-kicker" style="margin-bottom: 12px;">Live Demo</div>
+                        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 800; margin-bottom: 16px;">Coba Langsung Panel Admin CloudMember</h2>
+                        <p style="color: #475569; font-size: 18px; margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto;">Penasaran dengan tampilan dan kemudahan mengelola produk digital? Silakan login ke panel admin menggunakan akun demo di bawah ini.</p>
+                        
+                        <div style="background: white; border: 1px solid var(--line); border-radius: 16px; max-width: 500px; margin: 0 auto; padding: 32px; text-align: left; box-shadow: var(--shadow-sm);">
+                            <div style="margin-bottom: 20px;">
+                                <span style="display: block; font-size: 13px; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Link Akses:</span>
+                                <a href="https://demo.sheetflare.net/admin" target="_blank" style="color: var(--cyan); font-weight: 700; text-decoration: none; font-size: 16px; word-break: break-all;">https://demo.sheetflare.net/admin</a>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <span style="display: block; font-size: 13px; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Email:</span>
+                                <code style="display: block; background: #f1f5f9; padding: 12px 16px; border-radius: 8px; font-family: monospace; font-size: 16px; color: var(--ink); font-weight: 600; border: 1px solid #e2e8f0;">demoadmin@sheetflare.net</code>
+                            </div>
+                            <div>
+                                <span style="display: block; font-size: 13px; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Password:</span>
+                                <code style="display: block; background: #f1f5f9; padding: 12px 16px; border-radius: 8px; font-family: monospace; font-size: 16px; color: var(--ink); font-weight: 600; border: 1px solid #e2e8f0;">rahasia123</code>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 40px;">
+                            <a class="btn btn-primary" href="https://demo.sheetflare.net/admin" target="_blank" style="padding: 0 40px;">Buka Halaman Demo Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="bonus" style="padding-top: 20px; padding-bottom: 40px;">
+                <div class="wrap">
+                    <div style="background: white; border: 2px dashed #f59e0b; border-radius: 24px; padding: 48px 24px; text-align: center; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                        <div class="icon-box" style="margin: 0 auto 20px; background: #fef3c7; color: #b45309; width: 72px; height: 72px; font-size: 32px; border-radius: 20px;">🎁</div>
+                        <div class="section-kicker" style="color: #d97706; margin-bottom: 12px;">Bonus Usaha Siap Pakai</div>
+                        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 900; margin-bottom: 16px; color: var(--ink);">Gratis 57 Produk Digital (Lisensi Jual Lagi)</h2>
+                        <p style="color: #475569; font-size: 18px; margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                            Belum punya produk sendiri? Tenang! Kami sediakan <strong>57 produk digital Premium</strong> dengan Lisensi Komersial (PLR/MRR). Anda bebas mengunggahnya ke CloudMember, menentukan harga sendiri, dan <strong>menyimpan 100% keuntungan langsung ke rekening Anda!</strong>
+                        </p>
+                    </div>
+                </div>
+            
+<div class="bonus-action" style="display:block;width:100%;margin-top:30px;text-align:center;">
+  <a class="btn btn-primary" href="https://spotmember.blog" target="_blank" rel="noopener">
+    🎁 Cek 57 Produk Digital
+  </a>
+</div>
+</section>
+
+            <section class="section soft" id="affiliate-promo" style="padding-top: 40px; padding-bottom: 40px;">
+                <div class="wrap">
+                    <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border-radius: 24px; padding: 48px 32px; text-align: center; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(14, 165, 233, 0.1); border-radius: 50%; z-index: 1;"></div>
+                        <div style="position: relative; z-index: 2;">
+                            <div class="section-kicker" style="color: var(--cyan); margin-bottom: 12px;">Cari Uang Tambahan</div>
+                            <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 900; margin-bottom: 16px; color: white;">Hasilkan Pendapatan dengan Komisi Afiliasi 40%</h2>
+                            <p style="color: #94a3b8; font-size: 18px; margin-bottom: 32px; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                                Rekomendasikan CloudMember kepada rekan, klien, atau audiens Anda dan dapatkan <strong>komisi sebesar 40%</strong> untuk setiap penjualan yang berhasil melalui link referral unik Anda. Pendaftaran sangat mudah, transparan, dan pencairan komisi dilakukan secara berkala.
+                            </p>
+                            <a class="btn" href="https://sheetflare.net/member" target="_blank" style="background: linear-gradient(135deg, var(--cyan), #0284c7); color: white; box-shadow: 0 10px 20px rgba(14, 165, 233, 0.25); padding: 0 36px;">Daftar Menjadi Affiliate Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+<section class="section" id="operasional">
+<div class="wrap">
+<div class="section-head">
+<div class="section-kicker">Operasional Bisnis</div>
+<h2>Bukan hanya menjual, tetapi mengelola bisnis setelah transaksi.</h2>
+<p>CloudMember membantu proses setelah customer membeli.</p>
+</div>
+<div class="grid-3">
+<div class="feature"><div class="icon-box">A</div><b>Broadcast WhatsApp & Email</b><p>Kirim komunikasi ke customer berdasarkan status order dan produk.</p></div>
+<div class="feature"><div class="icon-box">B</div><b>Subscription System</b><p>Kelola produk berlangganan bulanan maupun tahunan.</p></div>
+<div class="feature"><div class="icon-box">C</div><b>Analytics Marketing</b><p>Gunakan Meta Pixel, TikTok Pixel, Google Analytics, dan conversion tracking.</p></div>
+</div>
+</div>
+</section>
+
+
+
+
+<section class="section" id="harga">
+                <div class="wrap pricing">
+                    <div>
+                        <div class="section-kicker">Investasi Terbaik</div>
+                        <h2>Satu Harga untuk Seluruh Sistem Digital Business Anda.</h2>
+                        <p>Mengapa membayar biaya berlangganan platform ratusan ribu tiap bulan jika Anda bisa memiliki sistem sendiri dengan performa tingkat tinggi (edge network)?</p>
+                        <div class="included" style="margin-top: 24px;">
+                            <div><strong>Panel Admin Dashboard</strong><span>Termasuk</span></div>
+                            <div><strong>Manajemen Produk &amp; Checkout</strong><span>Termasuk</span></div>
+                            <div><strong>Member Area (Akses Materi)</strong><span>Termasuk</span></div>
+                            <div><strong>CMS &amp; Landing Page Builder</strong><span>Termasuk</span></div>
+                            <div><strong>Sistem Affiliate Built-in (3 Tier)</strong><span>Termasuk</span></div>
+                            <div><strong>Auto Notif WhatsApp &amp; Email</strong><span>Termasuk</span></div>
+                            <div><strong>Bonus: 57 produk digital Jual Lagi</strong><span style="background: var(--amber); color: #b45309;">Spesial</span></div>
+                            <div><strong>Hak Akses Program Afiliasi 40%</strong><span style="background: var(--green-light); color: #047857;">Aktif</span></div>
+                        </div>
+                    </div>
+                    <aside class="price-card">
+                        <div class="price-badge">Early Bird Promo</div>
+                        <s>Rp497.000</s>
+                        <span class="sale">Rp97.000</span>
+                        <p class="small">Lisensi lifetime untuk penggunaan sistem. Anda bebas mengelola database Anda sendiri di dalam akun Cloudflare.</p>
+                        <a class="btn btn-primary" href="/checkout?id=cloudp">Beli CloudMember Sekarang</a>
+                        <p class="small" style="text-align: center; margin-top: 16px; margin-bottom: 0;">Akses instan setelah pembayaran.</p>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="section soft" id="faq">
+                <div class="wrap">
+                    <div class="section-head">
+                        <div class="section-kicker">Pertanyaan Umum</div>
+                        <h2>Yang sering ditanyakan (FAQ)</h2>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq"><b>Benarkah tanpa biaya langganan server?</b><p>Betul. CloudMember diprogram spesifik untuk dijalankan di atas Cloudflare Pages &amp; D1 Database. Tier gratis Cloudflare sangat mumpuni untuk website skala UKM/kreator tanpa harus menyewa VPS bulanan.</p></div>
+                        <div class="faq"><b>Cocok untuk jualan apa saja?</b><p>Ideal untuk menjual eBook, course online (video), template desain, preset foto, lisensi software, file PDF, hingga sistem membership berlangganan.</p></div>
+                        <div class="faq"><b>Bisa dikaitkan dengan domain sendiri?</b><p>Tentu. Anda bebas menggunakan nama domain brand Anda sendiri (misal: produkanda.com atau id) dan SSL sudah diatur otomatis oleh Cloudflare.</p></div>
+                        <div class="faq"><b>Bagaimana sistem pembayarannya?</b><p>Mendukung alur checkout yang menghasilkan invoice. Bisa diproses manual (transfer bank/QRIS) atau disinkronkan dengan gateway pembayaran yang terintegrasi di sistem.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="final">
+                <h2>Siap mendominasi pasar produk digital?</h2>
+                <p>Tinggalkan biaya bulanan yang membengkak. Miliki mesin penjualan otomatis Anda sendiri hari ini dan mulai maksimalkan profit dari karya digital Anda.</p>
+                <a class="btn btn-primary" href="/checkout?id=cloudp">Ambil CloudMember - Rp97.000</a>
+            </section>
+        </main>
+
+        <footer>
+            <div class="wrap">
+                © 2026 CloudMember. Sistem jualan produk digital cerdas berbasis Cloudflare Pages &amp; D1 SQL.
+            </div>
+        </footer>
+    </div>

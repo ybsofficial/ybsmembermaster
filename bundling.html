@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundling Produk Digital - Lisensi Personal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(37, 99, 235, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(37, 99, 235, 0.8)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+
+  <meta property="og:title" content="Bundling Produk Digital Khusus Personal">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '813896314786492');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=813896314786492&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="relative pt-12 pb-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/40 to-slate-50">
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-blue-400/10 to-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/80 border border-blue-200 text-blue-800 text-xs sm:text-sm font-bold mb-6 shadow-sm">
+                <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
+                <i class="fa-solid fa-user-shield text-blue-600"></i> Lisensi Personal Khusus Penggunaan Pribadi
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-6 leading-[1.15] tracking-tight">
+                5 Produk Digital Siap Pakai Dengan <br class="hidden sm:block"/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+                    Lisensi Personal Khusus
+                </span> Untuk Optimasi Bisnis Anda!
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Bukan bundle <span class="line-through text-slate-400">500++ produk sampah</span> yang bikin pusing. Ini <strong class="text-slate-900 font-bold">5 produk digital premium pilihan</strong> buatan Advertisan & partner, dirancang khusus untuk mempermudah & meningkatkan bisnis Anda hari ini juga!
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="#harga" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-extrabold text-lg rounded-2xl shadow-xl shadow-blue-500/30 transition transform hover:-translate-y-1 flex items-center justify-center gap-3 group animate-pulse-glow">
+                    <span>Tingkatkan Bisnis Sekarang</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#produk" class="w-full sm:w-auto px-6 py-4 bg-white hover:bg-slate-100 text-slate-800 font-bold text-base rounded-2xl border border-slate-200 shadow-sm transition flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-eye text-blue-600"></i> Lihat Detail 5 Produk
+                </a>
+            </div>
+
+            <!-- Trust Highlights Features Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left mb-10">
+                <div class="p-3.5 bg-white/80 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-rocket text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-semibold">Manfaat</p>
+                        <p class="text-sm font-bold text-slate-900">Maksimal Untuk Anda</p>
+                    </div>
+                </div>
+                <div class="p-3.5 bg-white/80 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-infinity text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-semibold">Akses Materi</p>
+                        <p class="text-sm font-bold text-slate-900">Selamanya (Lifetime)</p>
+                    </div>
+                </div>
+                <div class="p-3.5 bg-white/80 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-crown text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-semibold">Kualitas</p>
+                        <p class="text-sm font-bold text-slate-900">Eksklusif & Original</p>
+                    </div>
+                </div>
+                <div class="p-3.5 bg-white/80 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-bolt text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-semibold">Proses Fast</p>
+                        <p class="text-sm font-bold text-slate-900">Instant Download</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image Showcase -->
+            <div class="mt-4 relative max-w-3xl mx-auto group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative bg-white p-2 sm:p-3 rounded-3xl border border-slate-200 shadow-2xl">
+                    <img src="https://ik.imagekit.io/maihfdgfn5/bundle5_YqOV942IB.png" 
+                         alt="Paket Produk Digital Advertisan" 
+                         onerror="this.src='https://placehold.co/1000x600/1e3a8a/ffffff?text=5+Produk+Digital+Siap+Pakai+Advertisan'"
+                         class="w-full h-auto rounded-2xl object-cover">
+                    
+                    <!-- Floating Pill on Image -->
+                    <div class="absolute -bottom-4 right-4 sm:right-8 bg-slate-950 text-white px-4 py-2.5 rounded-2xl shadow-xl border border-slate-800 flex items-center gap-3 animate-float">
+                        <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                        <div class="text-left text-xs">
+                            <p class="font-bold">Siap Pakai Hari Ini</p>
+                            <p class="text-slate-400">Lengkap dengan Panduan Praktis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Problem Agitation Section -->
+    <section id="masalah" class="py-20 px-4 sm:px-6 bg-white border-y border-slate-200/80">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="px-3.5 py-1.5 rounded-full bg-red-100 text-red-700 text-xs font-bold tracking-wide uppercase">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Kesulitan Optimasi Bisnis?
+                </span>
+                <h2 class="text-xl sm:text-3xl font-extrabold text-slate-950 mt-4 mb-4">
+                    Mau Tingkatkan Skill & Bisnis Tapi Pusing Harus Mulai Dari Mana?
+                </h2>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+                    Anda sudah scroll TikTok, YouTube, hingga grup FB. Semua bilang <em class="text-slate-900 font-semibold">"Upgrade skill & kembangin bisnis itu gampang."</em> Tapi begitu dicoba sendiri, kenyataannya pahit:
+                </p>
+            </div>
+
+            <!-- Problem Grid Cards -->
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="p-6 sm:p-8 bg-slate-50 hover:bg-slate-100/80 rounded-3xl border border-slate-200/80 transition shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center font-extrabold text-xl mb-5">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Belajar Autodidak Butuh Waktu Lama</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Pusing mencari referensi yang valid, harus coba-coba sendiri dari nol tanpa panduan yang terstruktur. Butuh waktu berminggu-minggu bahkan bulanan.</p>
+                </div>
+
+                <div class="p-6 sm:p-8 bg-slate-50 hover:bg-slate-100/80 rounded-3xl border border-slate-200/80 transition shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-extrabold text-xl mb-5">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Bingung Memilih Strategi Yang Tepat</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Mencari ide dan strategi yang pas untuk bisnis sudah menguras energi. Takut sudah keluar banyak modal tapi tidak ada hasilnya yang signifikan.</p>
+                </div>
+
+                <div class="p-6 sm:p-8 bg-slate-50 hover:bg-slate-100/80 rounded-3xl border border-slate-200/80 transition shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-extrabold text-xl mb-5">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Beli E-Course Mahal Ternyata Isinya Teori</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Tergiur kelas online mahal, tapi begitu dibuka isinya cuma materi usang, tidak aplikatif, dan sulit dipraktekkan langsung ke bisnis Anda.</p>
+                </div>
+
+                <div class="p-6 sm:p-8 bg-slate-50 hover:bg-slate-100/80 rounded-3xl border border-slate-200/80 transition shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-extrabold text-xl mb-5">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg text-slate-900 mb-2">Bingung Cara Promosi & Iklannya</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Punya produk/jasa tapi bingung mau promosi lewat mana, apalagi setting iklan Meta (FB/IG Ads) yang keliatan jeletut dan ribet buat pemula.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center max-w-3xl mx-auto">
+                <p class="font-bold text-amber-900 text-base sm:text-lg">
+                    <i class="fa-solid fa-circle-exclamation text-amber-600 mr-2"></i>
+                    Akhirnya niat scale-up bisnis cuma jadi wacana. Modal sudah keluar, waktu habis terbuang, hasil tetap NOL besar!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Box Section -->
+    <section class="py-20 px-4 sm:px-6 bg-slate-900 text-white relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-xl sm:text-3xl font-extrabold text-white mb-4">
+                    Jangan Sampai Terjebak "Jebakan Kuantitas"
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Bukan butuh 1.000 produk sampah di Google Drive, Anda cuma butuh <strong class="text-blue-400">panduan yang aplikatif</strong> + <strong class="text-blue-400">tools pendukung yang tepat!</strong>
+                </p>
+            </div>
+
+            <!-- Comparison Table / Grid -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Bad Option -->
+                <div class="bg-slate-800/80 border border-red-500/30 rounded-3xl p-6 sm:p-8">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-700">
+                        <div class="w-10 h-10 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-red-400">Bundle Materi "Murahan"</h3>
+                            <p class="text-xs text-slate-400">Banyak diiklankan di mana-mana</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-times text-red-500 mt-1"></i>
+                            <span>Isinya generik, jadul, dan bajakan hasil comot internet.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-times text-red-500 mt-1"></i>
+                            <span>Tidak ada panduan terstruktur dan membingungkan pemula.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-times text-red-500 mt-1"></i>
+                            <span>Hanya berisi teori tanpa tools pendukung yang praktis.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-times text-red-500 mt-1"></i>
+                            <span>Ujung-ujungnya cuma numpuk di GDrive tanpa pernah dipraktekkan.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Good Option (Advertisan) -->
+                <div class="bg-gradient-to-b from-blue-950 to-slate-800 border-2 border-blue-500 rounded-3xl p-6 sm:p-8 relative shadow-2xl">
+                    <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Solusi Cerdas
+                    </div>
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-blue-900/60">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-blue-300">5 Paket High-Quality</h3>
+                            <p class="text-xs text-blue-400 font-medium">Curated & Ready to Use</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-200">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
+                            <span><strong>100% Karya Eksklusif</strong> buatan Advertisan & Partner.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
+                            <span><strong>Dilengkapi Template & Panduan</strong> siap praktek.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
+                            <span><strong>Format Modern:</strong> Custom GPTs, Canva template & PDF Guide.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check-circle text-blue-400 mt-1"></i>
+                            <span><strong>Lisensi Personal:</strong> Gunakan sepuasnya untuk optimasi bisnis Anda.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution & Product Showcase Section -->
+    <section id="produk" class="py-24 px-4 sm:px-6 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wide uppercase">
+                    Isi Paket Bundling
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-4 mb-4">
+                    Inilah 5 Produk Digital Siap Pakai Yang Akan Anda Dapatkan
+                </h2>
+                <p class="text-slate-600 text-base sm:text-lg">
+                    Setiap produk sudah dilengkapi panduan praktis & template. Klik pada masing-masing produk untuk melihat detail isinya!
+                </p>
+            </div>
+
+            <!-- Product Showcase Visual Image Banner -->
+            <div class="mb-14 rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white p-2">
+                <img src="https://ik.imagekit.io/maihfdgfn5/bundle5_YqOV942IB.png" 
+                     alt="Visual 5 Produk Digital Advertisan" 
+                     onerror="this.src='https://placehold.co/1200x500/0f172a/ffffff?text=5+Produk+Digital+Eksklusif+Advertisan'"
+                     class="w-full h-auto rounded-2xl object-cover">
+            </div>
+
+            <!-- Interactive Product Grid Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Product Card 1 -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-blue-500 transition shadow-sm hover:shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 font-extrabold text-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                                01
+                            </span>
+                            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Best Seller</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-3 group-hover:text-blue-600 transition">Personal Branding Builder</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Panduan praktis & Custom GPT untuk membantu Anda membangun personal branding profesional dari nol di media sosial.</p>
+                        
+                        <div class="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Custom GPT & Prompt
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Panduan Step-by-Step
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Lisensi Personal
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Personal Branding Builder', 'Panduan komprehensif & Custom GPT untuk membangun personal branding yang memukau di Instagram, TikTok, & LinkedIn. Solusi tepat untuk meningkatkan otoritas Anda di industri.')" class="w-full py-3 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Detail & Preview File
+                    </button>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-blue-500 transition shadow-sm hover:shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 font-extrabold text-lg flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition">
+                                02
+                            </span>
+                            <span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">AI Tool</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-3 group-hover:text-indigo-600 transition">Content Generator (GPTs)</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Tools generator konten berbasis AI untuk membuat ribuan ide konten, script video viral, dan copywriting promosi tanpa pernah kehabisan ide.</p>
+                        
+                        <div class="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Custom Prompt & GPT Assistant
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Ide Konten 1 Tahun
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Lisensi Personal
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Content Generator', 'Solusi ampuh untuk para content creator & pebisnis yang sering stuck ide. Berisi custom prompt ChatGPT & template siap pakai untuk memproduksi konten harian secara otomatis.')" class="w-full py-3 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Detail & Preview File
+                    </button>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-blue-500 transition shadow-sm hover:shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 font-extrabold text-lg flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition">
+                                03
+                            </span>
+                            <span class="text-xs font-bold bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Viral Trend</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-3 group-hover:text-purple-600 transition">Tools Akun Faceless</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Paket strategi & asset lengkap membangun akun media sosial tanpa tampil wajah yang bisa mendatangkan audiens organik masif.</p>
+                        
+                        <div class="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Custom GPT & Assets
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Strategi Organik
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Lisensi Personal
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Tools Membangun Akun Faceless', 'Cocok untuk Anda yang pemalu atau tidak mau tampil di depan kamera. Berisi panduan memilih niche faceless, sumber asset gratis, & formula pertumbuhan organik.')" class="w-full py-3 bg-slate-100 hover:bg-purple-50 hover:text-purple-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Detail & Preview File
+                    </button>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-blue-500 transition shadow-sm hover:shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 font-extrabold text-lg flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">
+                                04
+                            </span>
+                            <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">High Conversion</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-3 group-hover:text-emerald-600 transition">Meta Creative Generator</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Tools & template praktis pembuat materi iklan Meta (FB & IG Ads) berkonversi tinggi tanpa perlu jago skill desain grafis yang rumit.</p>
+                        
+                        <div class="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Canva Templates
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Copywriting Hook
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Lisensi Personal
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Meta Creative Generator', 'Materi khusus pengiklan FB/IG Ads. Berisi formula visual ad, hook copywriting yang teruji melejitkan CTR iklan, serta template visual Canva yang ramah pemula.')" class="w-full py-3 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Detail & Preview File
+                    </button>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-blue-500 transition shadow-sm hover:shadow-xl flex flex-col justify-between group md:col-span-2 lg:col-span-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 font-extrabold text-lg flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition">
+                                05
+                            </span>
+                            <span class="text-xs font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Productivity</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-3 group-hover:text-amber-600 transition">Keuangan Keluarga Muslim</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Produk edukasi & spreadsheet finansial keluarga syariah untuk mengatur arus kas pribadi agar lebih rapi dan berkah.</p>
+                        
+                        <div class="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Financial Spreadsheet
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Panduan Praktis
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Lisensi Personal
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Keuangan Keluarga Muslim', 'Berisi spreadsheet pengatur budget keluarga syariah, panduan zakat/investasi, agar finansial keluarga tertata lebih aman dan terencana.')" class="w-full py-3 bg-slate-100 hover:bg-amber-50 hover:text-amber-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info"></i> Detail & Preview File
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Summary callout -->
+            <div class="mt-12 text-center p-6 bg-blue-50/80 border border-blue-200 rounded-3xl max-w-3xl mx-auto">
+                <p class="text-slate-800 font-bold text-base sm:text-lg">
+                    <i class="fa-solid fa-laptop-code text-blue-600 mr-2"></i>
+                    Setiap Produk Dirancang Khusus Agar Mudah Dipraktekkan!
+                </p>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">Anda tinggal baca panduan, gunakan tools/template yang disediakan, dan terapkan langsung ke dalam bisnis Anda hari ini juga!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Differences / Why Us Section -->
+    <section class="py-24 px-4 sm:px-6 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3.5 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase">
+                    Keunggulan Produk
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 mt-4 mb-4">
+                    Mengapa Produk Bundle Ini Sangat Berbeda Dari Yang Lain?
+                </h2>
+                <p class="text-slate-600 text-base">
+                    Dibuat khusus dengan standar kualitas tinggi untuk memastikan Anda mendapatkan manfaat nyata.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 bg-slate-50 border border-slate-200/80 rounded-3xl flex items-start gap-5 hover:border-blue-500 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md shadow-blue-500/20">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Bukan Hasil Bajakan</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Bukan template usang tahunan yang beredar di ribuan drive bajakan. Ini murni produk original yang legal dan aman digunakan.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-slate-50 border border-slate-200/80 rounded-3xl flex items-start gap-5 hover:border-blue-500 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md shadow-indigo-500/20">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Karya Eksklusif Partner</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Dibuat langsung oleh tim Advertisan & praktisi partner terpercaya, disesuaikan dengan tren kebutuhan market saat ini.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-slate-50 border border-slate-200/80 rounded-3xl flex items-start gap-5 hover:border-blue-500 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md shadow-emerald-500/20">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Fokus Pada Kualitas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Hanya 5 produk berkualitas yang beneran berdampak untuk Anda, bukan ribuan produk sampah yang hanya memenuhi storage Anda.</p>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-slate-50 border border-slate-200/80 rounded-3xl flex items-start gap-5 hover:border-blue-500 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-600 text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md shadow-amber-500/20">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Investasi Jangka Panjang</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Sekali bayar, semua materi, ilmu, dan tools bisa Anda gunakan selamanya untuk mengoptimasi bisnis Anda berulang kali!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Social Proof Section -->
+    <section class="py-20 px-4 sm:px-6 bg-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase">
+                    Testimoni Pengguna
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 mt-4 mb-3">
+                    Apa Kata Mereka Yang Sudah Mencoba?
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Ratusan pemula telah berhasil meningkatkan performa bisnis dan karir mereka!
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic mb-6 leading-relaxed">
+                            "Awalnya ragu karena udah pernah ketipu beli e-course abal-abal. Pas beli ini, gokil! Materinya rapi, gampang dimengerti, hari pertama praktek langsung kerasa banget impactnya ke bisnis saya!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-slate-100 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
+                            RD
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Rian Dwi</h4>
+                            <p class="text-xs text-slate-500">Business Owner - Bandung</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic mb-6 leading-relaxed">
+                            "Produk Personal Branding dan Content Generatornya beneran kepake banget! Saya pakai untuk bikin konten harian di IG & TikTok, bener-bener hemat waktu dan tenaga mikir ide!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-slate-100 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">
+                            AN
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Angga N.</h4>
+                            <p class="text-xs text-slate-500">Content Creator - Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic mb-6 leading-relaxed">
+                            "Harga segini dapet 5 tools eksklusif itu worth it banget parah. Harga murah banget buat ilmu daging kayak gini. Bener-bener ngebantu buat scale-up jualan saya di Meta Ads!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-slate-100 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
+                            SP
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Siti Rahma</h4>
+                            <p class="text-xs text-slate-500">Online Seller - Jakarta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Offer Section -->
+    <section id="harga" class="py-24 px-4 sm:px-6 bg-gradient-to-b from-slate-50 via-blue-50 to-slate-100 relative">
+        <div class="max-w-xl mx-auto">
+            
+            <!-- Pricing Card Container -->
+            <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-10 text-center relative overflow-hidden">
+                <!-- Top Ribon -->
+                <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-xs uppercase tracking-wider py-2 px-8 rounded-full inline-block mb-6 shadow-md">
+                    ⚡ PROMO DISKON HARGA PERDANA
+                </div>
+
+                <p class="text-slate-500 mb-2 font-medium text-sm">
+                    Harga normal 5 bundle panduan ini:
+                </p>
+                <p class="text-slate-400 line-through text-2xl font-bold mb-4">
+                    Rp 499.000
+                </p>
+
+                <h2 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">
+                    Khusus Hari Ini, Dapatkan 5 Produk Digital Premium Khusus Personal Cukup Bayar:
+                </h2>
+
+                <!-- Big Price Tag -->
+                <div class="my-6">
+                    <span class="text-5xl sm:text-6xl font-black text-blue-600 tracking-tight">Rp59.000</span>
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mt-2">
+                        (Sekali Bayar — Tanpa Biaya Langganan)
+                    </p>
+                </div>
+
+                <!-- Features Included Check List -->
+                <div class="text-left space-y-3.5 my-8 border-y border-slate-100 py-6 text-sm text-slate-700">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+                        <span><strong>5 Produk Digital Siap Pakai</strong> (Personal Branding, Content AI, Faceless, Meta Creative, Finance)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+                        <span><strong>Panduan Lengkap & Tools Praktis</strong> siap diaplikasikan</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+                        <span><strong>Lisensi Personal</strong> (Untuk pengembangan diri & bisnis Anda)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+                        <span>Akses Download Instant & Lifetime</span>
+                    </div>
+                </div>
+
+                <!-- High-Converting Order Button -->
+                <a href="https://sheetflare.net/checkout?id=BUNDLING" target="_blank" rel="noopener noreferrer" 
+                   class="block w-full py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white rounded-2xl font-black text-lg transition-all shadow-xl shadow-blue-500/30 transform hover:-translate-y-1 flex items-center justify-center gap-3 group">
+                    <i class="fa-solid fa-rocket text-xl group-hover:scale-110 transition-transform"></i>
+                    <span>AMBIL PAKET PROMO SEKARANG</span>
+                </a>
+
+                <p class="text-xs text-slate-400 mt-4 flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-lock text-slate-400"></i> Transaksi Aman & Pemrosesan Otomatis
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 animate-float" style="animation-duration: 0.3s;">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mb-4">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-3">Judul Produk</h3>
+            <p id="modal-desc" class="text-slate-600 text-sm leading-relaxed mb-6">Deskripsi detail produk...</p>
+            
+            <a href="#harga" onclick="closeModal()" class="block w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-center text-sm rounded-xl transition shadow-md shadow-blue-500/20">
+                Dapatkan Akses Sekarang Rp59k
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        function openModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
