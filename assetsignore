@@ -1,0 +1,17 @@
+_worker.js
+wrangler.toml
+wrangler.*.toml
+.git
+.github/
+.cloudmember/
+.cloudmember-build/
+.gitignore
+.assetsignore
+README.md
+ALUR_MASTER_CLOUDMEMBER.md
+migrations/
+panduan-lokal/
+releases/
+__pycache__/
+*.zip
+*.pyc
