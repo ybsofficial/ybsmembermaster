@@ -8,13 +8,13 @@ binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "db-sheetflare-net"
-database_id = "6a611ca9-db31-4f69-a5e1-305f497788ed"
+database_name = "db_ybsmembermaster"
+database_id = "db3f9425-9fc8-406e-a183-fe48a9b8aed5"
 
 [vars]
 INSTALLATION_MODE = "master"
-MASTER_UPDATE_URL = "https://sheetflare.net/version.json"
-LICENSE_SERVER_URL = "https://sheetflare.net/"
+MASTER_UPDATE_URL = "https://web.ybs.asia/version.json"
+LICENSE_SERVER_URL = "https://web.ybs.asia/"
 ADMIN_SESSION_SECRET = "melimpah digital seratus juta per bulan mulai bulan juni tahun dua ribu dua puluh enam"
 CRON_TOKEN = "cm-cron-9Jd72KpQx-2026"
 
