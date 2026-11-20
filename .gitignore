@@ -1,0 +1,14 @@
+node_modules/
+.wrangler/
+.dev.vars
+*.local
+*.log
+wrangler.local.toml
+wrangler.master.local.toml
+wrangler.buyer.local.toml
+panduan-lokal/
+.cloudmember-build/
+.cloudmember/clients.json
+.cloudmember/clients.*.json
+!.cloudmember/clients.example.json
+__pycache__/
