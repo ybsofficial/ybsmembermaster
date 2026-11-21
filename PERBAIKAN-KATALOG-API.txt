@@ -1,0 +1,16 @@
+PATCH MASTER YBS ASIA - 21 NOVEMBER 2026
+
+Perbaikan:
+1. Wrangler assets run_worker_first = true agar request API POST ke root diproses Worker sebelum asset statis.
+2. Menghapus case check_payment_status duplikat yang tidak pernah dieksekusi.
+3. safeFetchPOST sekarang melaporkan HTTP status dan Content-Type jika respons API kosong/bukan JSON.
+4. Menghapus ADMIN_SESSION_SECRET dan CRON_TOKEN dari vars file. Set keduanya sebagai Cloudflare Worker Secrets.
+
+PENTING:
+- Jangan menghapus atau membuat ulang database D1.
+- Pastikan binding DB tetap menunjuk ke db_ybsmembermaster dengan database ID yang sudah digunakan.
+- Set secret melalui dashboard Cloudflare atau perintah:
+  npx wrangler secret put ADMIN_SESSION_SECRET
+  npx wrangler secret put CRON_TOKEN
+- Nilai secret harus baru/acak dan berbeda satu sama lain. Jangan commit secret ke GitHub.
+- Setelah deploy, uji POST API get_products dan GET /__cloudmember/health.

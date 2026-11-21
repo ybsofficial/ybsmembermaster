@@ -7858,24 +7858,7 @@ case 'delete_product': {
               return jsonRes({ status: 'success', message: 'Sistem telah mengirim informasi password ke email Anda!' });
           } catch (error) { return jsonRes({ status: 'error', message: 'Sistem error: ' + error.message }); }
         }
-        // ==========================================
-        // API UNTUK PANTAU STATUS PEMBAYARAN LIVE
-        // ==========================================
-        case 'check_payment_status': {
-          const invReq = String(body.invoice || "").trim();
-          if (!invReq) return jsonRes({ status: 'error' });
-          
-          const cekOrder = await env.DB.prepare("SELECT status, harga_total, nama_produk, id_produk FROM orders WHERE invoice = ?").bind(invReq).first();
-          if (!cekOrder) return jsonRes({ status: 'error' });
-          
-          return jsonRes({ 
-              status: 'success', 
-              payment_status: cekOrder.status,
-              harga_total: cekOrder.harga_total,
-              nama_produk: cekOrder.nama_produk,
-              id_produk: cekOrder.id_produk
-          });
-        }
+        // check_payment_status ditangani oleh handler utama di atas.
 
         // ==========================================
         //  SISTEM LISENSI: AUTO-LOCK & VERIFY
