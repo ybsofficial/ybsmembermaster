@@ -15,6 +15,3 @@ database_id = "db3f9425-9fc8-406e-a183-fe48a9b8aed5"
 INSTALLATION_MODE = "master"
 MASTER_UPDATE_URL = "https://web.ybs.asia/version.json"
 LICENSE_SERVER_URL = "https://web.ybs.asia/"
-
-[triggers]
-crons = ["0 * * * *"]
