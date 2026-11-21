@@ -1,4 +1,4 @@
-name = "ybsmembermaster"
+name = "master"
 main = "_worker.js"
 compatibility_date = "2026-06-04"
 
@@ -14,8 +14,8 @@ database_id = "db3f9425-9fc8-406e-a183-fe48a9b8aed5"
 
 [vars]
 INSTALLATION_MODE = "master"
-MASTER_UPDATE_URL = "https://web.ybs.asia/version.json"
-LICENSE_SERVER_URL = "https://web.ybs.asia/"
+MASTER_UPDATE_URL = "https://master.ybs.asia/version.json"
+LICENSE_SERVER_URL = "https://master.ybs.asia/"
 
 [triggers]
 crons = ["0 * * * *"]
