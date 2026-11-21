@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Install Cloudmember</title>
+  <title>Install YBS Cloud Member</title>
   <script src="config.js?v=2026"></script>
   <style>
     :root {
@@ -228,7 +228,7 @@
     const adminAccessLink = document.getElementById('admin-access-link');
 
     domainInput.value = window.location.hostname.replace(/^www\./, '');
-    serverInput.value = 'https://sheetflare.net/';
+    serverInput.value = 'https://master.ybs.asia';
     resetServerInput.value = serverInput.value;
     if (window.CLOUDMEMBER_APP) {
       versionText.innerText = 'Versi: ' + window.CLOUDMEMBER_APP.version;
