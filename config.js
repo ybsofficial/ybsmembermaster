@@ -6,7 +6,7 @@
 const SCRIPT_URL = window.location.origin + "/";
 window.SCRIPT_URL = SCRIPT_URL;
 window.CLOUDMEMBER_APP = {
-    name: "cloudmember",
+    name: "ybsmember",
     version: "1.0.118",
     releaseDate: "2026-11-07"
 };
