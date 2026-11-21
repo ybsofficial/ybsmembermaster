@@ -7,9 +7,8 @@ directory = "."
 binding = "ASSETS"
 
 [[d1_databases]]
-binding = "DB"
-database_name = "db_ybsmembermaster"
-database_id = "db3f9425-9fc8-406e-a183-fe48a9b8aed5"
+"binding": "DB",
+      "database_id": "db3f9425-9fc8-406e-a183-fe48a9b8aed5"
 
 [vars]
 INSTALLATION_MODE = "master"
